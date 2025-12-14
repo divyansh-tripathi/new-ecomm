@@ -5,7 +5,7 @@ const UsersList = () => {
   const [users, setUsers] = useState([])
 
   const fetchUsers = async () => {
-    const res = await fetch("http://localhost:4000/users");
+    const res = await fetch("https://e-commerce-y5p2.onrender.com/users");
     const data = await res.json();
     setUsers(data);
   };
