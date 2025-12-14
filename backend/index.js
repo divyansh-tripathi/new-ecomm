@@ -7,6 +7,7 @@ const multer = require("multer");
 const path = require("path");
 const cors = require("cors");
 // const { type } = require("os");
+const fs = require("fs");
 
 app.use(express.json());
 app.use(cors());
@@ -22,29 +23,75 @@ app.get("/", (req, res) => {
   res.send("Express is running");
 });
 
+const uploadDir = path.join(__dirname, "upload/images");
+
+if (!fs.existsSync(uploadDir)) {
+  fs.mkdirSync(uploadDir, { recursive: true });
+}
+
+
+
+
+
+
+
 //!  Image Storage Engine
 
+
 const storage = multer.diskStorage({
-  destination: "./upload/images",
+  destination: (req, file, cb) => {
+    cb(null, uploadDir);
+  },
   filename: (req, file, cb) => {
-    return cb(
+    cb(
       null,
       `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`
     );
   },
 });
 
-const upload = multer({ storage: storage });
+const upload = multer({ storage });
+
+
+
+
+
+// const storage = multer.diskStorage({
+//   destination: "./upload/images",
+//   filename: (req, file, cb) => {
+//     return cb(
+//       null,
+//       `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`
+//     );
+//   },
+// });
+
+// const upload = multer({ storage: storage });
 
 //!  Createing Upload Endpoint for images
 
-app.use("/images", express.static("upload/images"));
+app.use("/images", express.static(uploadDir));
 app.post("/upload", upload.single("product"), (req, res) => {
+  if (!req.file) {
+    return res.status(400).json({ success: 0, message: "No file uploaded" });
+  }
+
+  const imageUrl = `${req.protocol}://${req.get("host")}/images/${req.file.filename}`;
+
   res.json({
     success: 1,
-    image_url: `https://e-commerce-y5p2.onrender.com/images/${req.file.filename}`,
+    image_url: imageUrl,
   });
 });
+
+
+// app.use("/images", express.static("upload/images"));
+// app.post("/upload", upload.single("product"), (req, res) => {
+//   res.json({
+//     success: 1,
+//     image_url: `https://e-commerce-y5p2.onrender.com/images/${req.file.filename}`,
+//   });
+// });
 
 //! Schema for Creating Products
 
