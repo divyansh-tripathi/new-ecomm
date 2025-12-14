@@ -1,0 +1,176 @@
+/* ============================
+   BASIC SECTIONS WITH 3D DEPTH
+=============================*/
+.shopcategory-banner {
+  display: block;
+  margin: 30px auto;
+  width: 82%;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  transition: 0.3s ease-out;
+}
+
+.shopcategory-banner:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.25);
+}
+
+
+/* ==============================
+     SORT BAR (Glass + 3D)
+==============================*/
+.shopcategory-indexSort {
+  display: flex;
+  margin: 0px 170px;
+  justify-content: space-between;
+  align-items: center;
+
+  background: rgba(255,255,255,0.75);
+  backdrop-filter: blur(12px);
+
+  border-radius: 14px;
+  padding: 14px 22px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
+.shopcategory-sort {
+  padding: 10px 20px;
+  border-radius: 40px;
+  border: 1px solid #ccc;
+
+  background: linear-gradient(145deg, #fff, #f3f3f3);
+
+  box-shadow:
+      0 4px 10px rgba(0,0,0,0.12),
+      inset 0 2px 4px rgba(255,255,255,0.4);
+
+  transition: 0.2s ease-out;
+}
+
+.shopcategory-sort:hover {
+  transform: translateY(-2px);
+  box-shadow:
+      0 8px 18px rgba(0,0,0,0.18),
+      inset 0 2px 5px rgba(255,255,255,0.6);
+}
+
+
+/* ==============================
+       PRODUCT GRID (3D Cards)
+==============================*/
+.shopcategory-products {
+  margin: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  row-gap: 70px;
+  column-gap: 20px;
+  justify-items: center;
+  align-items: center;
+}
+
+.shopcategory-products .item {
+  background: #ffffff;
+  border-radius: 14px;
+
+  padding: 10px;
+  transition: 0.25s ease-out;
+
+  box-shadow:
+      0 6px 20px rgba(0,0,0,0.15),
+      0 2px 8px rgba(0,0,0,0.1);
+}
+
+.shopcategory-products .item:hover {
+  transform: translateY(-6px);
+  box-shadow:
+      0 14px 28px rgba(0,0,0,0.25),
+      0 4px 12px rgba(0,0,0,0.12);
+}
+
+
+/* ==============================
+      LOAD MORE BUTTON (3D)
+==============================*/
+.shopcategory-loadmore {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin: 120px auto;
+  width: 233px;
+  height: 69px;
+  border-radius: 75px;
+
+  background: linear-gradient(145deg, #eaeaea, #ffffff);
+  color: #787878;
+  font-size: 18px;
+  font-weight: 500;
+
+  box-shadow:
+      0 6px 18px rgba(0,0,0,0.2),
+      inset 0 3px 6px rgba(255,255,255,0.5);
+
+  transition: 0.25s ease-out;
+}
+
+.shopcategory-loadmore:hover {
+  transform: translateY(-4px);
+  box-shadow:
+      0 14px 26px rgba(0,0,0,0.25),
+      inset 0 2px 4px rgba(255,255,255,0.4);
+}
+
+
+/* =====================================
+           MEDIA QUERIES (Improved)
+======================================*/
+
+@media (max-width: 1280px) {
+  .shopcategory-banner {
+    margin: 20px auto;
+    width: 90%;
+  }
+
+  .shopcategory-indexSort {
+    width: 90%;
+    margin: auto;
+    padding: 12px 18px;
+  }
+
+  .shopcategory-products {
+    width: 90%;
+    margin: 10px auto;
+    row-gap: 50px;
+  }
+
+  .shopcategory-loadmore {
+    margin: 90px auto;
+    width: 200px;
+    height: 60px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 800px) {
+  .shopcategory-banner {
+    width: 90%;
+  }
+
+  .shopcategory-products {
+    width: 95%;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .shopcategory-loadmore {
+    margin: 60px auto;
+    width: 150px;
+    height: 45px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 500px) {
+  .shopcategory-products {
+    grid-template-columns: 1fr 1fr;
+  }
+}

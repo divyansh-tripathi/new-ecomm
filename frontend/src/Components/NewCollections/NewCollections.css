@@ -1,0 +1,110 @@
+/* ============================
+   NEW COLLECTIONS SECTION
+============================ */
+.new-collections {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 0 20px;
+  margin-bottom: 100px;
+}
+
+.new-collections h1 {
+  color: #171717;
+  font-size: 52px;
+  font-weight: 700;
+  text-transform: uppercase;
+
+  /* Smooth fade entrance */
+  animation: fadeIn 1s ease;
+}
+
+.new-collections hr {
+  width: 220px;
+  height: 6px;
+  border-radius: 10px;
+  background: #252525;
+}
+
+.collections {
+  margin-top: 50px;
+
+  /* GRID CLEANED & FIXED */
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 35px;
+
+  width: 100%;
+  max-width: 1300px;
+
+  /* Smooth appearance */
+  animation: slideUp 1s ease;
+}
+
+/* 3D Hover Card Effect */
+.collections .item {
+  transition: 0.4s ease;
+  transform: perspective(800px) translateZ(0px);
+}
+
+.collections .item:hover {
+  transform: perspective(800px) translateZ(40px) rotateX(4deg) rotateY(4deg);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+/* ============================
+   MEDIA QUERIES
+============================ */
+@media (max-width: 1280px) {
+  .new-collections h1 { font-size: 42px; }
+  .new-collections hr { width: 170px; }
+  .collections {
+    gap: 25px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 1024px) {
+  .new-collections h1 { font-size: 34px; }
+  .new-collections hr { width: 130px; height: 4px; }
+  .collections {
+    gap: 18px;
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 800px) {
+  .new-collections { gap: 8px; }
+
+  .new-collections h1 { font-size: 26px; }
+  .new-collections hr { width: 110px; }
+
+  .collections {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+}
+
+@media (max-width: 500px) {
+  .new-collections h1 { font-size: 20px; }
+  .new-collections hr { width: 90px; height: 3px; }
+
+  .collections {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+}
+
+/* ============================
+   ANIMATIONS
+============================ */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

@@ -1,0 +1,177 @@
+/* ------------------------------------
+   RELATED PRODUCTS – PREMIUM UPGRADE
+-------------------------------------*/
+.relatedproducts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 40px 20px;
+  min-height: 90vh;
+
+  transform-style: preserve-3d;
+}
+
+.relatedproducts h1 {
+  color: #171717;
+  font-size: 55px;
+  font-weight: 700;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.2);
+}
+
+.relatedproducts hr {
+  width: 200px;
+  height: 6px;
+  border-radius: 10px;
+  background: #252525;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.25);
+}
+
+/* Product Container */
+.relatedproducts-item {
+  margin-top: 50px;
+  display: flex;
+  gap: 35px;
+}
+
+/* Apply 3D card effect to each item */
+.relatedproducts-item > div {
+  background: white;
+  padding: 12px;
+  border-radius: 16px;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  transform-style: preserve-3d;
+  cursor: pointer;
+
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* Hover 3D effect */
+.relatedproducts-item > div:hover {
+  transform: translateY(-12px) rotateX(4deg) rotateY(-4deg) scale(1.04);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.30);
+}
+
+/* Product Images */
+.relatedproducts-item img {
+  width: 220px;
+  border-radius: 12px;
+  transition: transform 0.35s ease;
+}
+
+/* Image 3D pop-out */
+.relatedproducts-item > div:hover img {
+  transform: translateZ(20px) scale(1.06);
+}
+
+
+
+/* ------------------------------------
+   RESPONSIVE 1280px
+-------------------------------------*/
+@media (max-width: 1280px) {
+  .relatedproducts {
+    min-height: 70vh;
+  }
+
+  .relatedproducts h1 {
+    font-size: 42px;
+  }
+
+  .relatedproducts hr {
+    width: 160px;
+    height: 4px;
+  }
+
+  .relatedproducts-item {
+    gap: 22px;
+    margin-top: 30px;
+  }
+
+  .relatedproducts-item img {
+    width: 180px;
+  }
+}
+
+
+
+/* ------------------------------------
+   RESPONSIVE 1024px
+-------------------------------------*/
+@media (max-width: 1024px) {
+  .relatedproducts {
+    min-height: 60vh;
+  }
+
+  .relatedproducts h1 {
+    font-size: 32px;
+  }
+
+  .relatedproducts hr {
+    width: 120px;
+    height: 3px;
+  }
+
+  .relatedproducts-item {
+    gap: 16px;
+    margin-top: 20px;
+  }
+
+  .relatedproducts-item img {
+    width: 150px;
+  }
+}
+
+
+
+/* ------------------------------------
+   RESPONSIVE 800px
+-------------------------------------*/
+@media (max-width: 800px) {
+  .relatedproducts {
+    min-height: 55vh;
+    gap: 8px;
+  }
+
+  .relatedproducts h1 {
+    font-size: 24px;
+  }
+
+  .relatedproducts hr {
+    width: 100px;
+  }
+
+  .relatedproducts-item {
+    gap: 10px;
+  }
+
+  .relatedproducts-item img {
+    width: 130px;
+  }
+}
+
+
+
+/* ------------------------------------
+   MOBILE 500px
+-------------------------------------*/
+@media (max-width: 500px) {
+  .relatedproducts {
+    min-height: 110vh;
+  }
+
+  .relatedproducts-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    padding: 0 10px;
+  }
+
+  .relatedproducts-item img {
+    width: 100%;
+  }
+
+  .relatedproducts-item > div {
+    padding: 10px;
+  }
+}
