@@ -10,7 +10,7 @@ const ListProduct = () => {
 
 
   const fetchPoducts = async () => {
-    await fetch("https://e-commerce-y5p2.onrender.com/allproducts")
+    await fetch("https://e-commerce-vfne.onrender.com/allproducts")
       .then((res) => res.json())
       .then((data) => {
         setAllProducts(data);
@@ -27,7 +27,7 @@ const ListProduct = () => {
 
   const remove_product = async (id)=>
     {
-    await fetch('https://e-commerce-y5p2.onrender.com/removeproduct',{
+    await fetch('https://e-commerce-vfne.onrender.com/removeproduct',{
       method:'POST',
       headers:{
         Accept:'aplication/json',
