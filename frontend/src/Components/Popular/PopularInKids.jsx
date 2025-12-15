@@ -5,7 +5,7 @@ const PopularInKids = () => {
   const [popularInKids, setPopularInKids] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:4000/popularinkids")
+    fetch("https://e-commerce-vfne.onrender.com/popularinkids")
       .then((response) => response.json())
       .then((data) => setPopularInKids(data));
     console.log("Kids data Fetched");

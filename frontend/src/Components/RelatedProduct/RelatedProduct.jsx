@@ -11,22 +11,22 @@ const RelatedProduct = ({ category, currentProductId }) => {
     let url = "";
     switch (category.toLowerCase()) {
       case "men":
-        url = "http://localhost:4000/popularinmen";
+        url = "https://e-commerce-vfne.onrender.com/popularinmen";
         break;
       case "women":
-        url = "http://localhost:4000/popularinwomen";
+        url = "https://e-commerce-vfne.onrender.com/popularinwomen";
         break;
       case "kid":
-        url = "http://localhost:4000/popularinkids";
+        url = "https://e-commerce-vfne.onrender.com/popularinkids";
         break;
       default:
-        return; // unknown category
+        return; 
     }
 
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
-        const filtered = data.filter((item) => item.id !== currentProductId); // exclude current product
+        const filtered = data.filter((item) => item.id !== currentProductId); 
         setRelatedProducts(filtered);
       })
       .catch((err) => console.error(err));

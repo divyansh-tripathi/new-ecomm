@@ -28,8 +28,8 @@ const LoginSignup = () => {
     try {
       const url =
         state === "Login"
-          ? "http://localhost:4000/login"
-          : "http://localhost:4000/signup";
+          ? "https://e-commerce-vfne.onrender.com/login"
+          : "https://e-commerce-vfne.onrender.com/signup";
 
       const response = await fetch(url, {
         method: "POST",
