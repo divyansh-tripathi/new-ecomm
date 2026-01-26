@@ -20,7 +20,7 @@
 
   /* Glass + Shadow */
   backdrop-filter: blur(8px);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
 
   /* Smooth fade-in */
   animation: fadeUp 1s ease;
@@ -48,7 +48,8 @@
   background: white;
   border-radius: 80px;
 
-  width: 730px;
+  width: 100%;
+  max-width: 730px;
   height: 70px;
   border: 1px solid #e3e3e3;
 
@@ -59,11 +60,12 @@
 
 .newsletter div:hover {
   transform: perspective(800px) translateZ(40px) rotateX(3deg) rotateY(3deg);
-  box-shadow: 0 20px 35px rgba(0,0,0,0.15);
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.15);
 }
 
 .newsletter input {
-  width: 500px;
+  width: 100%;
+  max-width: 500px;
   margin-left: 30px;
   border: none;
   outline: none;
@@ -92,7 +94,7 @@
 
 .newsletter button:hover {
   transform: perspective(800px) translateZ(25px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.22);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.22);
 }
 
 /* =============================
@@ -104,15 +106,25 @@
     gap: 20px;
   }
 
-  .newsletter h1 { font-size: 38px; }
-  .newsletter p { font-size: 16px; }
+  .newsletter h1 {
+    font-size: 38px;
+  }
+
+  .newsletter p {
+    font-size: 16px;
+  }
 
   .newsletter div {
-    width: 600px;
+    width: 100%;
+    max-width: 600px;
     height: 60px;
   }
 
-  .newsletter input { width: 300px; }
+  .newsletter input {
+    width: 100%;
+    max-width: 300px;
+  }
+
   .newsletter button {
     width: 160px;
     height: 60px;
@@ -126,16 +138,23 @@
     padding: 0 40px;
   }
 
-  .newsletter h1 { font-size: 32px; }
-  .newsletter p { font-size: 15px; }
+  .newsletter h1 {
+    font-size: 32px;
+  }
+
+  .newsletter p {
+    font-size: 15px;
+  }
 
   .newsletter div {
-    width: 500px;
+    width: 100%;
+    max-width: 500px;
     height: 55px;
   }
 
   .newsletter input {
-    width: 260px;
+    width: 100%;
+    max-width: 260px;
     font-size: 14px;
   }
 
@@ -149,26 +168,33 @@
 @media (max-width: 800px) {
   .newsletter {
     width: 90%;
-    height: 32vh;
-    padding: 0 20px;
+    height: auto;
+    padding: 40px 20px;
     gap: 15px;
+    margin-bottom: 100px;
   }
 
-  .newsletter h1 { font-size: 24px; }
-  .newsletter p { font-size: 13px; }
+  .newsletter h1 {
+    font-size: 28px;
+  }
+
+  .newsletter p {
+    font-size: 14px;
+  }
 
   .newsletter div {
-    width: 380px;
+    width: 100%;
+    max-width: 380px;
     height: 45px;
   }
 
   .newsletter input {
-    width: 180px;
-    font-size: 12px;
+    width: 60%;
+    font-size: 14px;
   }
 
   .newsletter button {
-    width: 100px;
+    width: 35%;
     height: 45px;
     font-size: 12px;
   }
@@ -176,34 +202,37 @@
 
 @media (max-width: 500px) {
   .newsletter {
-    width: 100%;
-    height: auto;
-    padding: 10px;
-    gap: 14px;
+    width: 95%;
+    padding: 30px 15px;
+    gap: 15px;
   }
 
-  .newsletter h1 { font-size: 20px; }
+  .newsletter h1 {
+    font-size: 22px;
+  }
+
   .newsletter p {
-    font-size: 12px;
-    max-width: 240px;
+    font-size: 13px;
+    max-width: 100%;
   }
 
   .newsletter div {
-    width: 250px;
-    height: 42px;
-    padding: 0 10px;
+    width: 100%;
+    height: 45px;
+    padding: 0 5px;
   }
 
   .newsletter input {
-    width: 120px;
+    width: 60%;
     font-size: 12px;
-    margin-left: 10px;
+    margin-left: 5px;
   }
 
   .newsletter button {
-    width: 85px;
-    height: 42px;
-    font-size: 12px;
+    width: 35%;
+    height: 45px;
+    font-size: 11px;
+    border-radius: 80px;
   }
 }
 
@@ -211,6 +240,13 @@
    ANIMATIONS
 ============================= */
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(40px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

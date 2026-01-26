@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./RelatedProduct.css";
 import Item from "../Items/Item";
+import { API_BASE_URL } from "../../config/api";
 
 const RelatedProduct = ({ category, currentProductId }) => {
   const [relatedProducts, setRelatedProducts] = useState([]);
@@ -11,22 +12,22 @@ const RelatedProduct = ({ category, currentProductId }) => {
     let url = "";
     switch (category.toLowerCase()) {
       case "men":
-        url = "https://e-commerce-vfne.onrender.com/popularinmen";
+        url = `${API_BASE_URL}/popularinmen`;
         break;
       case "women":
-        url = "https://e-commerce-vfne.onrender.com/popularinwomen";
+        url = `${API_BASE_URL}/popularinwomen`;
         break;
       case "kid":
-        url = "https://e-commerce-vfne.onrender.com/popularinkids";
+        url = `${API_BASE_URL}/popularinkids`;
         break;
       default:
-        return; 
+        return;
     }
 
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
-        const filtered = data.filter((item) => item.id !== currentProductId); 
+        const filtered = data.filter((item) => item.id !== currentProductId);
         setRelatedProducts(filtered);
       })
       .catch((err) => console.error(err));

@@ -155,7 +155,7 @@
 // //   } else {
 // //     id = 1;
 // //   }
-  
+
 // //   const product = new Product({
 // //     id: id,
 // //     name: req.body.name,
@@ -164,11 +164,11 @@
 // //     new_price: req.body.new_price,
 // //     old_price: req.body.old_price,
 // //   });
-  
+
 // //   console.log(product);
 // //   await product.save();
 // //   console.log("Saved");
-  
+
 // //   res.json({
 // //     success: true,
 // //     name: req.body.name,
@@ -346,7 +346,7 @@
 //     } catch (error) {
 
 //       res.status(401).send({errors:"Please authenticate using a valid token"})
-      
+
 //     }
 //   }
 // }
@@ -674,6 +674,33 @@ app.post("/removefromcart", fetchUser, async (req, res) => {
 app.post("/getcart", fetchUser, async (req, res) => {
   const user = await Users.findById(req.user.id);
   res.json(user.cartData);
+});
+
+// ================= USER INFO =================
+app.get("/getuser", fetchUser, async (req, res) => {
+  try {
+    const user = await Users.findById(req.user.id);
+    if (!user) return res.status(404).json({ success: false, message: "User not found" });
+    res.json({ success: true, name: user.name });
+  } catch (error) {
+    res.status(500).json({ success: false, message: "Server error" });
+  }
+});
+
+// ================= CLEAR CART (After Payment) =================
+app.post("/clearcart", fetchUser, async (req, res) => {
+  try {
+    const user = await Users.findById(req.user.id);
+    if (!user) return res.status(404).json({ success: false, message: "User not found" });
+
+    // Clear all cart items
+    user.cartData = {};
+    await user.save();
+
+    res.json({ success: true, message: "Cart cleared successfully" });
+  } catch (error) {
+    res.status(500).json({ success: false, message: "Server error" });
+  }
 });
 
 

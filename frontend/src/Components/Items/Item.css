@@ -1,115 +1,116 @@
 .item {
-    width: 280px;
-    padding: 15px;
-    border-radius: 18px;
-
-    /* 3D + Glass Shadow Effect */
-    background: rgba(255, 255, 255, 0.35);
-    backdrop-filter: blur(8px);
-
-    box-shadow: 
-        0 8px 20px rgba(0,0,0,0.12),
-        0 4px 10px rgba(0,0,0,0.08);
-
-    transform-style: preserve-3d;
-    transition: transform 0.6s ease, box-shadow 0.4s ease;
-
-    cursor: pointer;
+    width: 100%;
+    max-width: 280px;
+    padding: 0;
+    /* Remove internal padding to let image fill */
+    border-radius: 12px;
+    background: var(--card-bg);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    /* Fix overflow */
+    transition: transform 0.3s ease;
+    border: 1px solid var(--border-color);
 }
 
 .item img {
     width: 100%;
-    border-radius: 12px;
-
-    /* Slight pop-out */
-    transform: translateZ(40px);
+    height: 320px;
+    /* Fixed height for consistency */
+    object-fit: cover;
+    /* Fill container without distortion */
+    display: block;
     transition: 0.5s ease;
 }
 
 .item p {
-    margin: 6px 0px;
+    margin: 12px 15px 4px;
     font-weight: 500;
+    color: var(--text-color);
+    /* Ensure visibility */
+    font-size: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .item-prices {
     display: flex;
-    gap: 20px;
+    gap: 15px;
+    padding: 0 15px 15px;
 }
 
 .item-price-new {
-    color: #374151;
-    font-size: 18px;
-    font-weight: 600;
+    color: #ff4141;
+    font-size: 16px;
+    font-weight: 700;
 }
 
 .item-price-old {
     color: #8c8c8c;
-    font-size: 18px;
+    font-size: 14px;
     font-weight: 500;
     text-decoration: line-through;
 }
 
-/* ============================
-   3D Hover Animation
-============================ */
 .item:hover {
-    transform: scale(1.05) rotateX(6deg) rotateY(-6deg);
-    box-shadow: 
-        0 15px 30px rgba(0,0,0,0.2),
-        0 10px 20px rgba(0,0,0,0.1);
-}
-
-.item:hover img {
-    transform: translateZ(70px) scale(1.03);
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
 }
 
 /* ============================
     RESPONSIVE SAME AS YOURS
 ============================ */
-@media (max-width:1280px){
-    .item{
+@media (max-width:1280px) {
+    .item {
         width: 220px;
         font-size: 14px;
     }
-    .item img{
+
+    .item img {
         width: 220px;
     }
-    .item-price-old{
+
+    .item-price-old {
         font-size: 14px;
     }
 }
 
-@media(max-width:1024px){
-    .item{
+@media(max-width:1024px) {
+    .item {
         font-size: 13px;
         width: 170px;
     }
+
     .item img {
         width: 170px;
     }
-    .item-price-old{
+
+    .item-price-old {
         font-size: 13px;
     }
 }
 
-@media(max-width:800px){
-    .item{
+@media(max-width:800px) {
+    .item {
         font-size: 12px;
         width: 120px;
     }
+
     .item img {
         width: 120px;
     }
-    .item-price-old{
+
+    .item-price-old {
         font-size: 12px;
     }
 }
 
 @media (max-width:500px) {
-    .item{
+    .item {
         width: 160px;
     }
-    .item img{
+
+    .item img {
         width: 160px;
     }
 }

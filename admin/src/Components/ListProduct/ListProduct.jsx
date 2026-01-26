@@ -25,14 +25,13 @@ const ListProduct = () => {
 
 
 
-  const remove_product = async (id)=>
-    {
-    await fetch('https://e-commerce-vfne.onrender.com/removeproduct',{
-      method:'POST',
-      headers:{
-        Accept:'aplication/json',
-        'Content-Type' : 'application/json',
-      },body:JSON.stringify({id:id})
+  const remove_product = async (id) => {
+    await fetch('https://e-commerce-vfne.onrender.com/removeproduct', {
+      method: 'POST',
+      headers: {
+        Accept: 'aplication/json',
+        'Content-Type': 'application/json',
+      }, body: JSON.stringify({ id: id })
     })
     await fetchPoducts()
   }
@@ -62,16 +61,16 @@ const ListProduct = () => {
                 alt=""
                 className="listproduct-product-icon"
               />
-              <p>{product.name}</p>
-              <p>${product.old_price}</p>
-              <p>${product.new_price}</p>
-              <p>{product.category}</p>
-              <img onClick={()=>{remove_product(product.id)}} src={cross_icon} alt="" className="listproduct-remove-icon" />
+              <p data-label="Title">{product.name}</p>
+              <p data-label="Old Price">${product.old_price}</p>
+              <p data-label="New Price">${product.new_price}</p>
+              <p data-label="Category">{product.category}</p>
+              <img onClick={() => { remove_product(product.id) }} src={cross_icon} alt="" className="listproduct-remove-icon" />
 
 
             </div>
             <hr />
-            </>
+          </>
           );
         })}
       </div>

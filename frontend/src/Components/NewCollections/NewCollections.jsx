@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
 import "./NewCollections.css";
 import Item from "../Items/Item";
+import { API_BASE_URL } from "../../config/api";
 
 const NewCollections = () => {
 
-const [new_collection, setNew_collection] = useState([])
+  const [new_collection, setNew_collection] = useState([])
 
-useEffect(() => {
-fetch('https://e-commerce-vfne.onrender.com/newcollections')
-.then((response)=> response.json())
-.then((data)=> setNew_collection(data))
-}, [])
+  useEffect(() => {
+    fetch(`${API_BASE_URL}/newcollections`)
+      .then((response) => response.json())
+      .then((data) => setNew_collection(data))
+  }, [])
 
 
 

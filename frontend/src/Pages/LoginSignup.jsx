@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./CSS/LoginSignup.css";
+import { API_BASE_URL } from "../config/api";
 
 const LoginSignup = () => {
   const [state, setState] = useState("Login"); // Login or Sign Up
@@ -28,8 +29,8 @@ const LoginSignup = () => {
     try {
       const url =
         state === "Login"
-          ? "https://e-commerce-vfne.onrender.com/login"
-          : "https://e-commerce-vfne.onrender.com/signup";
+          ? `${API_BASE_URL}/login`
+          : `${API_BASE_URL}/signup`;
 
       const response = await fetch(url, {
         method: "POST",
@@ -60,6 +61,9 @@ const LoginSignup = () => {
     <div className="loginsignup">
       <div className="loginsignup-container">
         <h1>{state}</h1>
+        <p className="loginsignup-subtitle">
+          {state === "Login" ? "Welcome back! Please login to your account." : "Create an account to get started."}
+        </p>
 
         <div className="loginsignup-fields">
           {state === "Sign Up" && (

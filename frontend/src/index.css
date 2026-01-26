@@ -1,14 +1,38 @@
-*{
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
   margin: 0;
+  padding: 0;
 }
+
+:root {
+  --bg-color: #ffffff;
+  --text-color: #171717;
+  --nav-bg: #ffffffcc;
+  --secondary-bg: #f6f6f6;
+  --card-bg: white;
+  --border-color: #e3e3e3;
+  --transition: 0.3s ease;
+}
+
+[data-theme='dark'] {
+  --bg-color: #121212;
+  --text-color: #f3f3f3;
+  --nav-bg: #1a1a1acc;
+  --secondary-bg: #1e1e1e;
+  --card-bg: #242424;
+  --border-color: #333;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color var(--transition), color var(--transition);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: 'Poppins';
 }
 
 code {

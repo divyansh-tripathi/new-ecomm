@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react";
+import { API_BASE_URL } from "../config/api";
 
 export const ShopContext = createContext(null);
 
@@ -16,29 +17,28 @@ const ShopContextProvider = (props) => {
   const [cartItems, setCartItems] = useState(getDefaultCart());
 
   useEffect(() => {
-    fetch("https://e-commerce-vfne.onrender.com/allproducts")
+    fetch(`${API_BASE_URL}/allproducts`)
       .then((response) => response.json())
       .then((data) => setAll_product(data));
 
-      if (localStorage.getItem('auth-token')){
-        fetch('https://e-commerce-vfne.onrender.com/getcart',{
-          method:'POST',
-          headers:{
-            Accept:'aplication/form-data',
-            'auth-token':`${localStorage.getItem('auth-token')}`,
-            'Content-Type':'application/json',
-          },
-          body:"",
-        }).then((response)=>response.json())
-        .then((data)=>setCartItems(data))
-      }
+    if (localStorage.getItem('auth-token')) {
+      fetch(`${API_BASE_URL}/getcart`, {
+        method: 'POST',
+        headers: {
+          Accept: 'aplication/form-data',
+          'auth-token': `${localStorage.getItem('auth-token')}`,
+          'Content-Type': 'application/json',
+        },
+        body: "",
+      }).then((response) => response.json())
+        .then((data) => setCartItems(data))
+    }
   }, []);
 
   const addToCart = (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
-    // console.log(cartItems);
     if (localStorage.getItem("auth-token")) {
-      fetch("https://e-commerce-vfne.onrender.com/addtocart", {
+      fetch(`${API_BASE_URL}/addtocart`, {
         method: 'POST',
         headers: {
           Accept: "application/json",
@@ -54,8 +54,8 @@ const ShopContextProvider = (props) => {
 
   const removeFromCart = (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
-    if(localStorage.getItem('auth-token')){
-      fetch("https://e-commerce-vfne.onrender.com/removefromcart", {
+    if (localStorage.getItem('auth-token')) {
+      fetch(`${API_BASE_URL}/removefromcart`, {
         method: 'POST',
         headers: {
           Accept: "application/form-data",
@@ -111,4 +111,3 @@ const ShopContextProvider = (props) => {
 };
 
 export default ShopContextProvider;
-  

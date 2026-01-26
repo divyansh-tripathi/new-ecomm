@@ -1,211 +1,262 @@
 /* ================================
    NAVBAR BASE
-================================ */
+   ================================ */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 40px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  background: #ffffffcc;
-  backdrop-filter: blur(10px);
+  padding: 8px 60px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  background: white;
   position: sticky;
   top: 0;
-  z-index: 100;
-  transform-style: preserve-3d;
-  transition: 0.3s ease;
-}
-
-/* Navbar subtle 3D hover */
-.navbar:hover {
-  transform: translateZ(20px);
+  z-index: 1000;
+  height: 70px;
+  transition: 0.3s;
 }
 
 /* ================================
    LOGO
-================================ */
+   ================================ */
 .nav-logo {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   cursor: pointer;
-  transition: transform 0.3s ease;
 }
 
-.nav-logo:hover {
-  transform: translateZ(40px) scale(1.04);
+.nav-logo img {
+  width: 35px;
 }
 
 .nav-logo p {
   color: #171717;
-  font-size: 36px;
+  font-size: 24px;
   font-weight: 700;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
 }
 
 /* ================================
    MENU ITEMS
-================================ */
+   ================================ */
 .nav-menu {
   display: flex;
   align-items: center;
   list-style: none;
-  gap: 35px;
-  color: #444;
-  font-size: 17px;
+  gap: 30px;
+  color: #171717;
+  font-size: 16px;
   font-weight: 500;
-  transform-style: preserve-3d;
 }
 
 .nav-menu li {
   cursor: pointer;
-  transition: all 0.35s ease;
-  padding: 5px 8px;
+  transition: 0.3s;
+  padding: 4px 0;
+  position: relative;
 }
 
-/* 3D hover effect */
 .nav-menu li:hover {
-  transform: translateZ(25px) scale(1.1);
   color: #ff4141;
 }
 
 .nav-menu hr {
   border: none;
-  width: 70%;
-  height: 3px;
-  border-radius: 10px;
+  width: 100%;
+  height: 2px;
   background: #ff4141;
+  position: absolute;
+  bottom: -2px;
 }
 
 /* ================================
-   LOGIN + CART
-================================ */
+   HAMBURGER MENU
+   ================================ */
+.hamburger-menu {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  width: 30px;
+  height: 25px;
+  justify-content: center;
+}
+
+.hamburger-menu span {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background: #171717;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Hamburger to Cross Animation */
+.hamburger-menu.open span:nth-child(1) {
+  transform: rotate(45deg) translate(8px, 8px);
+}
+
+.hamburger-menu.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-menu.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* ================================
+   RIGHT SECTION (LOGIN/CART/DRAWER)
+   ================================ */
 .nav-login-cart {
   display: flex;
   align-items: center;
-  gap: 35px;
-  transform-style: preserve-3d;
+  gap: 20px;
 }
 
-.nav-login-cart button {
-  width: 120px;
-  height: 45px;
-  border: 1px solid #777;
-  border-radius: 60px;
-  background: white;
-  font-size: 15px;
-  font-weight: 500;
+.nav-login-btn {
+  padding: 8px 20px;
+  background: #ff4141;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-weight: 600;
   cursor: pointer;
-  transition: transform 0.3s ease, background 0.3s;
+  transition: 0.3s;
 }
 
-.nav-login-cart button:hover {
-  transform: translateZ(30px) scale(1.06);
+.nav-login-btn:hover {
+  background: #e63939;
+}
+
+/* USER DRAWER */
+.nav-user-drawer-container {
+  position: relative;
+}
+
+.nav-user-drawer-trigger {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  color: #171717;
+  padding: 6px 12px;
   background: #f5f5f5;
+  border-radius: 20px;
+  transition: 0.3s;
 }
 
-.nav-login-cart img {
-  transition: 0.3s ease;
+.nav-user-drawer-trigger:hover {
+  background: #e8e8e8;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
-.nav-login-cart img:hover {
-  transform: translateZ(30px) scale(1.15);
+.arrow-icon {
+  border: solid #171717;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 3px;
+  transition: 0.3s;
+}
+
+.arrow-icon.down {
+  transform: rotate(45deg);
+  margin-bottom: 2px;
+}
+
+.arrow-icon.up {
+  transform: rotate(-135deg);
+  margin-top: 4px;
+}
+
+.nav-user-drawer {
+  position: absolute;
+  top: 45px;
+  right: 0;
+  width: 180px;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  animation: slideIn 0.2s ease-out;
+}
+
+.drawer-name {
+  font-size: 14px;
+  color: #171717;
+  font-weight: 500;
+}
+
+.drawer-logout {
+  width: 100%;
+  padding: 8px;
+  background: #fdf2f2;
+  color: #ff4141;
+  border: 1px solid #ff414133;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.drawer-logout:hover {
+  background: #ff41411a;
+}
+
+/* CART ICON */
+.nav-cart-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.nav-cart-icon img {
+  width: 28px;
 }
 
 .nav-cart-count {
-  width: 22px;
-  height: 22px;
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 18px;
+  height: 18px;
+  background: #ff3e3e;
+  color: white;
+  border-radius: 50%;
+  font-size: 11px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: -35px;
-  margin-left: -55px;
-  border-radius: 50%;
-  font-size: 13px;
-  background: #ff3e3e;
-  color: white;
-  box-shadow: 0 4px 10px rgba(255,0,0,0.3);
+  box-shadow: 0 2px 5px rgba(255, 0, 0, 0.3);
 }
 
 /* ================================
-   DROPDOWN TOGGLE (MOBILE)
-================================ */
-.nav-dropdown {
-  display: none;
-  width: 30px;
-  cursor: pointer;
-  transition: 0.5s ease;
-}
-
-.nav-dropdown.open {
-  transform: rotate(180deg);
-}
-
-/* ================================
-   BREAKPOINT – 1280px
-================================ */
-@media (max-width: 1280px) {
+   MOBILE STYLES
+   ================================ */
+@media (max-width: 850px) {
   .navbar {
-    padding: 14px 35px;
+    padding: 8px 20px;
   }
-  .nav-logo p {
-    font-size: 30px;
-  }
-  .nav-menu {
-    gap: 28px;
-    font-size: 15px;
-  }
-  .nav-login-cart {
-    gap: 25px;
-  }
-}
 
-/* ================================
-   BREAKPOINT – 1024px
-================================ */
-@media (max-width: 1024px) {
-  .nav-menu {
-    gap: 25px;
-    font-size: 14px;
-  }
-  .nav-login-cart button {
-    width: 90px;
-    height: 38px;
-    font-size: 14px;
-  }
-  .nav-login-cart img {
-    width: 30px;
-  }
-  .nav-cart-count {
-    width: 18px;
-    height: 18px;
-    margin-left: -40px;
-    font-size: 12px;
-  }
-}
-
-/* ================================
-   BREAKPOINT – 800px (MOBILE NAV)
-================================ */
-@media (max-width: 800px) {
-  .nav-dropdown {
-    display: block;
+  .hamburger-menu {
+    display: flex;
   }
 
   .nav-menu {
     display: none;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    height: 85px;
-    width: 90%;
+    flex-direction: column;
     position: absolute;
-    top: 80px;
-    left: 3%;
+    top: 70px;
+    right: 20px;
     background: white;
-    border-radius: 10px;
-    box-shadow: 0 5px 12px rgba(0,0,0,0.15);
-    transition: 0.4s ease;
+    width: 200px;
+    padding: 20px 0;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e0e0e0;
   }
 
   .nav-menu-visible {
@@ -213,30 +264,19 @@
   }
 
   .nav-menu li {
-    padding: 8px 15px;
-  }
-
-  /* Shrink right menu */
-  .nav-login-cart {
-    gap: 20px;
+    width: 100%;
+    text-align: center;
   }
 }
 
-/* ================================
-   BREAKPOINT – 500px (SMALL SCREEN)
-================================ */
-@media (max-width: 500px) {
-  .navbar {
-    padding: 10px 15px;
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
   }
-  .nav-logo {
-    transform: scale(0.85);
-  }
-  .nav-menu {
-    top: 55px;
-    height: 75px;
-  }
-  .nav-login-cart {
-    transform: scale(0.75);
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

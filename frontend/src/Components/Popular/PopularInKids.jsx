@@ -1,35 +1,36 @@
 import React, { useEffect, useState } from "react";
 import Item from "../Items/Item";
+import { API_BASE_URL } from "../../config/api";
 
 const PopularInKids = () => {
   const [popularInKids, setPopularInKids] = useState([]);
 
   useEffect(() => {
-    fetch("https://e-commerce-vfne.onrender.com/popularinkids")
+    fetch(`${API_BASE_URL}/popularinkids`)
       .then((response) => response.json())
       .then((data) => setPopularInKids(data));
     console.log("Kids data Fetched");
   }, []);
 
   return (
-     <div className="popular">
+    <div className="popular">
       <h1>POPULAR IN KIDS</h1>
       <hr />
       <div className="popular-item">
-      {popularInKids.map((item, i) => {
-        return (
-          <Item
-            key={i}
-            id={item.id}
-            name={item.name}
-            image={item.image}
-            new_price={item.new_price}
-            old_price={item.old_price}
-            category={item.category}
-          />
-        );
-      })}
-    </div>
+        {popularInKids.map((item, i) => {
+          return (
+            <Item
+              key={i}
+              id={item.id}
+              name={item.name}
+              image={item.image}
+              new_price={item.new_price}
+              old_price={item.old_price}
+              category={item.category}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 };

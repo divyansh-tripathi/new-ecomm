@@ -17,7 +17,7 @@
   color: #171717;
   font-size: 55px;
   font-weight: 700;
-  text-shadow: 1px 1px 4px rgba(0,0,0,0.2);
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
 }
 
 .popular hr {
@@ -25,21 +25,21 @@
   height: 6px;
   border-radius: 10px;
   background: #252525;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.25);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
 }
 
 /* Items container */
 .popular-item {
   margin-top: 50px;
   display: flex;
-  gap: 35px;
-
-  /* Allow smooth layout */
-  flex-wrap: nowrap;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  /* Fix clipping */
 }
 
 /* Apply 3D hover to each product card */
-.popular-item > div {
+.popular-item>div {
   background: #fff;
   padding: 12px;
   border-radius: 16px;
@@ -47,12 +47,12 @@
   transform-style: preserve-3d;
   cursor: pointer;
 
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
-.popular-item > div:hover {
+.popular-item>div:hover {
   transform: translateY(-12px) rotateX(4deg) rotateY(-4deg) scale(1.04);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
 }
 
 /* Product images */
@@ -63,7 +63,7 @@
 }
 
 /* On hover, image pops out in 3D */
-.popular-item > div:hover img {
+.popular-item>div:hover img {
   transform: translateZ(20px) scale(1.06);
 }
 
@@ -170,7 +170,7 @@
     width: 100%;
   }
 
-  .popular-item > div {
+  .popular-item>div {
     padding: 10px;
   }
 }
