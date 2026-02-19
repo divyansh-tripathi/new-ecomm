@@ -25,9 +25,11 @@ const Navbar = () => {
             "auth-token": token,
           },
         });
-        const data = await response.json();
-        if (data.success) {
-          setUserName(data.name);
+        if (response.ok) {
+          const data = await response.json();
+          if (data.success) {
+            setUserName(data.name);
+          }
         }
       } catch (error) {
         console.error("Error fetching user data:", error);

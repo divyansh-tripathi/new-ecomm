@@ -107,7 +107,6 @@ const CartItems = () => {
   const processPayment = () => {
     setCheckoutStep("processing");
     setIsProcessing(true);
-
     // Demo payment processing - 2 second delay
     setTimeout(async () => {
       setPaymentSuccess(true);
@@ -214,7 +213,13 @@ const CartItems = () => {
               </div>
               <button
                 className="proceed-btn"
-                onClick={() => setIsCheckoutOpen(true)}
+                onClick={() => {
+                  if (localStorage.getItem('auth-token')) {
+                    setIsCheckoutOpen(true);
+                  } else {
+                    window.location.replace("/login");
+                  }
+                }}
               >
                 PROCEED TO CHECKOUT
               </button>
