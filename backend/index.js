@@ -614,7 +614,7 @@ app.post("/signup", async (req, res) => {
   }
 
   let cart = {};
-  for (let i = 0; i < 300; i++) cart[i] = 0;
+  for (let i = 0; i < 301; i++) cart[i] = 0;
 
   const user = new Users({
     name: req.body.username,
@@ -656,24 +656,60 @@ const fetchUser = async (req, res, next) => {
 
 // ================= CART =================
 app.post("/addtocart", fetchUser, async (req, res) => {
-  const user = await Users.findById(req.user.id);
-  user.cartData[req.body.itemId] += 1;
-  await user.save();
-  res.json({ success: true });
+  try {
+    let user = await Users.findById(req.user.id);
+    if (!user) return res.status(404).json({ success: false, message: "User not found" });
+
+    if (!user.cartData) {
+      user.cartData = {};
+      for (let i = 0; i < 301; i++) user.cartData[i] = 0;
+    }
+
+    const itemId = req.body.itemId;
+    user.cartData[itemId] = (user.cartData[itemId] || 0) + 1;
+
+    user.markModified('cartData');
+    await user.save();
+    res.json({ success: true, message: "Added to cart" });
+  } catch (error) {
+    res.status(500).json({ success: false, message: "Error adding to cart" });
+  }
 });
 
 app.post("/removefromcart", fetchUser, async (req, res) => {
-  const user = await Users.findById(req.user.id);
-  if (user.cartData[req.body.itemId] > 0) {
-    user.cartData[req.body.itemId] -= 1;
+  try {
+    let user = await Users.findById(req.user.id);
+    if (!user) return res.status(404).json({ success: false, message: "User not found" });
+
+    const itemId = req.body.itemId;
+    if (user.cartData && user.cartData[itemId] > 0) {
+      user.cartData[itemId] -= 1;
+    }
+
+    user.markModified('cartData');
+    await user.save();
+    res.json({ success: true, message: "Removed from cart" });
+  } catch (error) {
+    res.status(500).json({ success: false, message: "Error removing from cart" });
   }
-  await user.save();
-  res.json({ success: true });
 });
 
 app.post("/getcart", fetchUser, async (req, res) => {
-  const user = await Users.findById(req.user.id);
-  res.json(user.cartData);
+  try {
+    let user = await Users.findById(req.user.id);
+    if (!user) return res.status(404).json({ success: false, message: "User not found" });
+
+    if (!user.cartData || Object.keys(user.cartData).length === 0) {
+      let cart = {};
+      for (let i = 0; i < 301; i++) cart[i] = 0;
+      user.cartData = cart;
+      user.markModified('cartData');
+      await user.save();
+    }
+    res.json(user.cartData);
+  } catch (error) {
+    res.status(500).json({ success: false, message: "Error fetching cart" });
+  }
 });
 
 // ================= USER INFO =================
@@ -693,8 +729,11 @@ app.post("/clearcart", fetchUser, async (req, res) => {
     const user = await Users.findById(req.user.id);
     if (!user) return res.status(404).json({ success: false, message: "User not found" });
 
-    // Clear all cart items
-    user.cartData = {};
+    // Initialize/Reset cart items
+    let cart = {};
+    for (let i = 0; i < 301; i++) cart[i] = 0;
+    user.cartData = cart;
+    user.markModified('cartData');
     await user.save();
 
     res.json({ success: true, message: "Cart cleared successfully" });
