@@ -12,8 +12,8 @@ const CartItems = () => {
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
   const [checkoutStep, setCheckoutStep] = useState("checkout"); // 'checkout' | 'payment-method' | 'processing' | 'success'
   const [paymentMethod, setPaymentMethod] = useState("");
-  const [isProcessing, setIsProcessing] = useState(false);
-  const [paymentSuccess, setPaymentSuccess] = useState(false);
+  // const [isProcessing, setIsProcessing] = useState(false);
+  // const [paymentSuccess, setPaymentSuccess] = useState(false);
   const [sessionTimer, setSessionTimer] = useState(300); // 5 minutes in seconds
   const [paymentVerified, setPaymentVerified] = useState(false);
 
@@ -106,10 +106,10 @@ const CartItems = () => {
 
   const processPayment = () => {
     setCheckoutStep("processing");
-    setIsProcessing(true);
+    // setIsProcessing(true);
     // Demo payment processing - 2 second delay
     setTimeout(async () => {
-      setPaymentSuccess(true);
+      // setPaymentSuccess(true);
       setCheckoutStep("success");
 
       // Clear cart after successful payment
@@ -130,8 +130,8 @@ const CartItems = () => {
       // Close popup after 2 seconds
       setTimeout(() => {
         setIsCheckoutOpen(false);
-        setPaymentSuccess(false);
-        setIsProcessing(false);
+        // setPaymentSuccess(false);
+        // setIsProcessing(false);
         setCheckoutStep("checkout");
         setPaymentMethod("");
         setSessionTimer(300);

@@ -42,7 +42,8 @@ const ShopContextProvider = (props) => {
         },
         body: JSON.stringify({}),
       })
-        .then((response) => response.ok ? response.json() : {})
+        .then((response) => response.text())
+        .then((text) => text ? JSON.parse(text) : {})
         .then((data) => setCartItems(data))
         .catch((err) => console.error("Error fetching cart:", err));
     }

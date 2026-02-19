@@ -4,7 +4,7 @@ import cart_icon from "../Assets/cart_icon.png";
 import { Link } from "react-router-dom";
 import { ShopContext } from "../../Context/ShopContext";
 import { useContext, useEffect, useRef, useState } from "react";
-import nav_dropdown from "../Assets/Arrow_Drop_Down_Circle-128.webp";
+// import nav_dropdown from "../Assets/Arrow_Drop_Down_Circle-128.webp";
 import { API_BASE_URL } from "../../config/api";
 
 const Navbar = () => {
