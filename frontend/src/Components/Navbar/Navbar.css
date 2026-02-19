@@ -93,7 +93,7 @@
 
 /* Hamburger to Cross Animation */
 .hamburger-menu.open span:nth-child(1) {
-  transform: rotate(45deg) translate(8px, 8px);
+  transform: rotate(45deg) translate(5px, 6px);
 }
 
 .hamburger-menu.open span:nth-child(2) {
@@ -101,7 +101,7 @@
 }
 
 .hamburger-menu.open span:nth-child(3) {
-  transform: rotate(-45deg) translate(7px, -7px);
+  transform: rotate(-45deg) translate(5px, -6px);
 }
 
 /* ================================
@@ -250,7 +250,7 @@
     flex-direction: column;
     position: absolute;
     top: 70px;
-    right: 20px;
+    right: 70px;
     background: white;
     width: 200px;
     padding: 20px 0;
